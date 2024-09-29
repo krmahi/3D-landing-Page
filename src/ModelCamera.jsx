@@ -7,13 +7,14 @@ const ModelCamera = ({ children, isMobile }) => {
 
   useFrame((state, delta) => {
     easing.damp3(state.camera.position, [0, 0, 20], 0.25, delta);
-    if (!isMobile)
+    if (!isMobile) {
       easing.dampE(
         groupref.current.rotation,
         [-state.pointer.y / 5, state.pointer.x / 1, 0],
         0.25,
         delta
       );
+    }
   });
   return <group ref={groupref}>{children}</group>;
 };
